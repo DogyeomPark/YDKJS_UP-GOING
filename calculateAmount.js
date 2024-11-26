@@ -15,33 +15,34 @@ function formatAmount(amount){
 }
 
 while (amount < bank_balance) {
-    amount = amount += MOBILE_PRICE;
+    amount += MOBILE_PRICE;
 
     if(amount < SPENDING_THRESHOLD){
-        amount = amount + ACCESSORY_PRICE;
+        amount += ACCESSORY_PRICE;
     }
 }
 
 function reduceAmount(amount) {
-    console.log("Auto Reducing amount...");
+    console.log("Reducing amount...");
 
     while (amount > bank_balance) {
-        if (amount - ACCESSORY_PRICE > bank_balance) {
+        if (amount - ACCESSORY_PRICE >= bank_balance) {
             amount -= ACCESSORY_PRICE;
             console.log("Removed an accessory. New amount : " + formatAmount(amount));
-        } else if (amount - MOBILE_PRICE > bank_balance) {
+        } else if (amount - MOBILE_PRICE >= 0) {
             amount -= MOBILE_PRICE;
             console.log("Removed a mobile. New amount: " + formatAmount(amount));
         } else {
+            console.log("No more items to remove.");
             break;
         }
     }
+    return amount;
+}
 
     amount = amount + calculateTax(amount);
 
-    console.log(
-        "your purchase: " + formatAmount(amount)
-    );
+    console.log("your purchase: " + formatAmount(amount));
 
     if (amount > bank_balance) {
         console.log("Ummm maybe you should check your bank balance...");
@@ -49,4 +50,3 @@ function reduceAmount(amount) {
     }
 
     console.log("Final purchase amount: " + formatAmount(amount));
-}
