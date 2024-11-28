@@ -1,0 +1,8 @@
+essential programming building blocks
+
+You need operators to perform actions on values.
+You need values and types to perform different kinds of actions like math on numbers or output with strings.
+You need variables to store data (aka state) during your program's execution.
+You need conditionals like if statements to make decisions.
+You need loops to repeat tasks until a condition stops being true.
+You need functions to organize your code into logical and reusable chunks.
